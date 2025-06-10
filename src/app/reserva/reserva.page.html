@@ -1,0 +1,40 @@
+<ion-button (click)="irAHome()">
+  <ion-icon name="home"></ion-icon>
+</ion-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reserva de Salas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ nombreSala }}</ion-card-title>
+      <ion-card-subtitle>{{ fechaSeleccionada | date:'fullDate' }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Selecciona día:</ion-label>
+        <ion-datetime [(ngModel)]="fechaSeleccionada" displayFormat="DD/MM/YYYY" [min]="fechaMinima"
+          [max]="fechaMaxima">
+
+        </ion-datetime>
+      </ion-item>
+
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Horarios disponibles</ion-label>
+        </ion-list-header>
+
+        <ion-item *ngFor="let hora of horasDisponibles">
+          <ion-label>{{ hora }}</ion-label>
+          <ion-button fill="outline" slot="end" (click)="reservar(hora)">
+            Reservar
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

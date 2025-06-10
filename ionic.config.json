@@ -1,0 +1,7 @@
+{
+  "name": "reserva",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

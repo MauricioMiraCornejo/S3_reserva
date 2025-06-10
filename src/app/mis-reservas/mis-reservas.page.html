@@ -1,0 +1,30 @@
+<ion-button (click)="irAHome()">
+  <ion-icon name="home"></ion-icon>
+</ion-button>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Reservas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let reserva of misReservas; let i = index">
+      <ion-label>
+        <h2>{{ reserva.sala }}</h2>
+        <p>{{ reserva.fecha | date:'fullDate' }}</p>
+        <p>{{ reserva.hora }}</p>
+        <p>Reservado el: {{ reserva.fechaReserva | date:'short' }}</p>
+      </ion-label>
+      <ion-button slot="end" color="danger" (click)="cancelarReserva(i)">
+        Cancelar
+      </ion-button>
+    </ion-item>
+
+    <ion-item *ngIf="misReservas.length === 0">
+      <ion-label class="ion-text-center">
+        No tienes reservas activas
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
